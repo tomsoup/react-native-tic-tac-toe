@@ -10,7 +10,7 @@ export default class Board extends Component {
     super();
     this.state = {
       cells: Array(9).fill(null),
-      playOne: true,
+      playerOne: true,
     };
   }
 
@@ -18,9 +18,12 @@ export default class Board extends Component {
   addMark = (position) => {
     //slice to avoid state mutation
     const cells = this.state.cells.slice();
+    if (this.calculateWinner(cells) || cells[position]) {
+      return;
+    }
     // short hand to determine x or o
-    cells[position] = this.state.playOne ? 'X' : 'O';
-    this.setState({cells, playOne: !this.state.playOne });
+    cells[position] = this.state.playerOne ? 'X' : 'O';
+    this.setState({cells, playerOne: !this.state.playerOne });
   }
 
   renderCell = () => {
@@ -57,7 +60,7 @@ export default class Board extends Component {
 
     let status;
       if (winner) {
-          console.log('Someone Wins');
+          console.log(`${winner} Wins!`);
       } else {
           console.log('keep playing');
       }
