@@ -12,7 +12,7 @@ export default class App extends React.Component {
       }],
       //playerOne will be X
       playerOne: true,
-      stepNumber: 0,
+      stepNumber: 0
     };
   }
 
@@ -41,6 +41,7 @@ export default class App extends React.Component {
     const current = history[history.length - 1];
     //slice to avoid state mutation
     const cells = current.cells.slice();
+    //Stop if winner or cell position is occupied
     if (this.calculateWinner(cells) || cells[position]) {
       return;
     }
@@ -63,28 +64,28 @@ export default class App extends React.Component {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
     const winner = this.calculateWinner(current.cells);
+    let turn = this.state.playerOne ? "X is next" : "O is next"
 
-
-    let status;
-      if (winner) {
-          console.log(`${winner} Wins!`);
-      } else {
-          console.log('keep playing');
-      }
+    if (winner) {
+      turn = `${winner} is the winner`
+    }
 
     return (
       <View style={styles.container}>
+        <Text style={{ fontSize: 34, color: '#0a0a0a'}}>
+          {turn}
+        </Text>
         <TouchableHighlight
           activeOpacity={1}
           style={{
-            backgroundColor: 'green'
+            backgroundColor: '#6e19a2', marginVertical: 50, paddingHorizontal: 20
           }}
-          underlayColor='transparent'
+          underlayColor='#8352a0'
           onPress={
             () => this.restart(0)
           }
         >
-          <Text>Reset </Text>
+          <Text style={{ fontSize: 34, color: 'white' }}>Restart </Text>
         </TouchableHighlight>
         <Board cells = {current.cells}
           onCellPress= {(position) => {this.addMark(position)}}
