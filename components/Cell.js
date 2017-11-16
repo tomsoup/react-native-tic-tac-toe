@@ -3,7 +3,7 @@ import { Text, View, TouchableHighlight, Alert } from 'react-native';
 import { Button } from 'react-native-elements';
 import { CELL_SIZE } from '../data/Size';
 
-export const Cell = ({ cell, onCellPress }) => {
+export const Cell = ({ cell, position, onCellPress }) => {
     return (
       <View>
         <TouchableHighlight
@@ -19,16 +19,10 @@ export const Cell = ({ cell, onCellPress }) => {
 
           }}
           onPress={
-            //
-            // () => {Alert.alert(
-            //   'Alert Title',
-            //   `${cell}`,
-            //   [
-            //     {text: 'OK', onPress: () => console.log('OK Pressed')},
-            //   ],
-            //   { cancelable: false }
-            // );}
-            () => {onCellPress}
+            () => {
+              console.log(position);
+              onCellPress(position)
+            }
           }
         >
           <Text>
