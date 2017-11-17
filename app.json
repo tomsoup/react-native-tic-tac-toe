@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "tic-tac-toe",
-    "description": "An empty new project",
+    "description": "React native verison of the ReactJS Tic Tac Toe",
     "slug": "tic-tac-toe",
     "privacy": "public",
     "sdkVersion": "22.0.0",
