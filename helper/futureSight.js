@@ -27,3 +27,9 @@ export const calculateWinner = (cells, player) => {
   }
   return null;
 };
+
+export const getRandomIntInclusive = (min, max) => {
+  const minimum = Math.ceil(min);
+  const maximum = Math.floor(max);
+  return Math.floor(Math.random() * ((maximum - minimum) + 1)) + minimum; //The maximum is inclusive and the minimum is inclusive
+};
