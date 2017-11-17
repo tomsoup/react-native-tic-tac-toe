@@ -31,7 +31,6 @@ export const Cell = ({ cell, position, onCellPress }) => {
           }}
           onPress={
             () => {
-              console.log(position);
               onCellPress(position)
             }
           }
